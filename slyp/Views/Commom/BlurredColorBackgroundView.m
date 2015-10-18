@@ -10,6 +10,8 @@
 
 @interface BlurredColorBackgroundView()
 
+@property (strong, nonatomic) CAGradientLayer *gradientLayer;
+@property (strong, nonatomic) NSTimer *timer;
 @end
 
 @implementation BlurredColorBackgroundView
@@ -27,7 +29,36 @@
     return self;
 }
 
+#pragma mark - event response
+
+- (void)timerEvent
+{
+    
+}
 
 
+#pragma getters and setters
+
+- (CAGradientLayer *)gradientLayer
+{
+    if (!self.gradientLayer) {
+        self.gradientLayer = [CAGradientLayer layer];
+        self.gradientLayer.frame = self.bounds;
+    }
+    return self.gradientLayer;
+}
+
+
+- (NSTimer *)timer
+{
+    if (!self.timer) {
+        self.timer = [NSTimer scheduledTimerWithTimeInterval:2.0f
+                                                      target:self
+                                                    selector:@selector(timerEvent)
+                                                    userInfo:nil
+                                                     repeats:YES];
+    }
+    return self.timer;
+}
 
 @end
