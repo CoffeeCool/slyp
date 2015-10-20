@@ -10,6 +10,6 @@
 
 @interface BlurredColorBackgroundView : UIView
 
-- (instancetype)initWithBackgroundColor:(UIColor *)color;
+- (instancetype)init;
 
 @end

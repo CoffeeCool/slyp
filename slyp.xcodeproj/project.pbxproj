@@ -15,6 +15,7 @@
 		1DAC38AA1BD3433700578AE3 /* slypTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 1DAC38A91BD3433700578AE3 /* slypTests.m */; };
 		1DAC38BB1BD3460000578AE3 /* BaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1DAC38BA1BD3460000578AE3 /* BaseViewController.m */; };
 		1DAC38C31BD347D600578AE3 /* BlurredColorBackgroundView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1DAC38C21BD347D600578AE3 /* BlurredColorBackgroundView.m */; };
+		1DE178A71BD5DBDD002E63BB /* ColorManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 1DE178A61BD5DBDD002E63BB /* ColorManager.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -44,6 +45,9 @@
 		1DAC38C11BD347D600578AE3 /* BlurredColorBackgroundView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BlurredColorBackgroundView.h; sourceTree = "<group>"; };
 		1DAC38C21BD347D600578AE3 /* BlurredColorBackgroundView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BlurredColorBackgroundView.m; sourceTree = "<group>"; };
 		1DAC38C41BD348D900578AE3 /* slyp-prefix.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "slyp-prefix.h"; sourceTree = "<group>"; };
+		1DE178A51BD5DBDD002E63BB /* ColorManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ColorManager.h; sourceTree = "<group>"; };
+		1DE178A61BD5DBDD002E63BB /* ColorManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ColorManager.m; sourceTree = "<group>"; };
+		1DE178A91BD5DC6D002E63BB /* SingletonTemplate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SingletonTemplate.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -64,6 +68,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1D6532BC1BD5D98700E7209C /* Managers */ = {
+			isa = PBXGroup;
+			children = (
+				1DE178A51BD5DBDD002E63BB /* ColorManager.h */,
+				1DE178A61BD5DBDD002E63BB /* ColorManager.m */,
+			);
+			path = Managers;
+			sourceTree = "<group>";
+		};
 		1DAC38811BD3433600578AE3 = {
 			isa = PBXGroup;
 			children = (
@@ -88,6 +101,7 @@
 				1DAC38B41BD345BB00578AE3 /* Models */,
 				1DAC38B81BD345BB00578AE3 /* Views */,
 				1DAC38B31BD345BB00578AE3 /* Controllers */,
+				1D6532BC1BD5D98700E7209C /* Managers */,
 				1DAC38B51BD345BB00578AE3 /* Resources */,
 				1DAC38B61BD345BB00578AE3 /* Util */,
 				1DAC38B71BD345BB00578AE3 /* Vendor */,
@@ -154,6 +168,7 @@
 		1DAC38B61BD345BB00578AE3 /* Util */ = {
 			isa = PBXGroup;
 			children = (
+				1DE178A81BD5DC6D002E63BB /* SingleTon */,
 			);
 			path = Util;
 			sourceTree = "<group>";
@@ -180,6 +195,14 @@
 				1DAC38C21BD347D600578AE3 /* BlurredColorBackgroundView.m */,
 			);
 			path = Commom;
+			sourceTree = "<group>";
+		};
+		1DE178A81BD5DC6D002E63BB /* SingleTon */ = {
+			isa = PBXGroup;
+			children = (
+				1DE178A91BD5DC6D002E63BB /* SingletonTemplate.h */,
+			);
+			path = SingleTon;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -284,6 +307,7 @@
 			files = (
 				1DAC38931BD3433700578AE3 /* AppDelegate.m in Sources */,
 				1DAC38C31BD347D600578AE3 /* BlurredColorBackgroundView.m in Sources */,
+				1DE178A71BD5DBDD002E63BB /* ColorManager.m in Sources */,
 				1DAC38BB1BD3460000578AE3 /* BaseViewController.m in Sources */,
 				1DAC38901BD3433700578AE3 /* main.m in Sources */,
 			);
@@ -482,6 +506,7 @@
 				1DAC38AF1BD3433700578AE3 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		1DAC38B01BD3433700578AE3 /* Build configuration list for PBXNativeTarget "slypTests" */ = {
 			isa = XCConfigurationList;
@@ -490,6 +515,7 @@
 				1DAC38B21BD3433700578AE3 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
