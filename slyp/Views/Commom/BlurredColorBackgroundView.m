@@ -22,36 +22,33 @@
 {
     self = [super initWithFrame:CGRectMake(0, 0, kScreen_Width, kScreen_Height)];
     if (self) {
-        self.backgroundColor = [UIColor blueColor];
+    
         [self.layer addSublayer:self.gradientLayer];
-        [self startTimer];
+        [self performAnimation];
     }
     return self;
 }
 
-#pragma mark - event response
-
-- (void)timerEvent
-{
-    //定时改变颜色
-    self.gradientLayer.colors = @[(__bridge id)[UIColor clearColor].CGColor,
-                                  (__bridge id)[UIColor colorWithRed:arc4random() % 255 / 255.0
-                                                               green:arc4random() % 255 / 255.0
-                                                                blue:arc4random() % 255 / 255.0
-                                                               alpha:1.0].CGColor];
-    
-    //定时改变分割点
-    self.gradientLayer.locations = @[@(arc4random() % 10 / 10.0f), @(1.0f)];
-}
 #pragma mark - private methods
-//启动计时器
-- (void)startTimer
+//执行动画
+- (void)performAnimation
 {
-    [NSTimer scheduledTimerWithTimeInterval:timerScheduledTimeInterval
-                                     target:self
-                                   selector:@selector(timerEvent)
-                                   userInfo:nil
-                                    repeats:YES];;
+    NSMutableArray *shiftedColors = [[_gradientLayer colors] mutableCopy];
+    shiftedColors = (NSMutableArray *)[[shiftedColors reverseObjectEnumerator] allObjects];
+    [_gradientLayer setColors:shiftedColors];
+    
+    CABasicAnimation *animation = [CABasicAnimation animationWithKeyPath:@"colors"];
+    [animation setToValue:shiftedColors];
+    [animation setDuration:10.0f];
+    [animation setRemovedOnCompletion:YES];
+    [animation setFillMode:kCAFillModeForwards];
+    [animation setDelegate:self];
+    [_gradientLayer addAnimation:animation forKey:@"animateGradient"];
+}
+
+- (void)animationDidStop:(CAAnimation *)anim finished:(BOOL)flag
+{
+    [self performAnimation];
 }
 
 #pragma getters and setters
@@ -63,12 +60,19 @@
         _gradientLayer.frame = self.bounds;
         //设置渐变颜色方向
         _gradientLayer.startPoint = CGPointMake(0, 0);
-        _gradientLayer.endPoint = CGPointMake(0, 1);
+        _gradientLayer.endPoint = CGPointMake(1, 1);
         //设定颜色组
-        _gradientLayer.colors = @[(__bridge id)[UIColor clearColor].CGColor,
-                                      (__bridge id)[UIColor purpleColor].CGColor];
+        NSMutableArray *colors = [NSMutableArray array];
+        for (NSInteger hue = [[ColorManager sharedColorManager] getStartHue]; hue < [[ColorManager sharedColorManager] getEndHue]; hue += 0.1) {
+            UIColor *color = [UIColor colorWithHue:1.0 * hue / 360.0
+                               saturation:1.0
+                               brightness:1.0
+                                    alpha:1.0];
+            [colors addObject:(id)[color CGColor]];
+        }
+        _gradientLayer.colors = colors;
         //设定颜色分割点
-        _gradientLayer.locations = @[@(0.5f) ,@(1.0f)];
+//        _gradientLayer.locations = @[@(0.25), @(0.5), @(0.75)];
     }
     return _gradientLayer;
 }

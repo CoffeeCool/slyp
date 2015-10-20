@@ -13,10 +13,9 @@
 
 SYNTHESIZE_SINGLETON_FOR_HEADER(ColorManager)
 
-//获取基础背景色
-- (UIColor*)getBaseColor;
+//获取起始和结束色调
+- (NSInteger)getStartHue;
 
-//获取随机梯度颜色
-- (UIColor*)getRandomColor;
+- (NSInteger)getEndHue;
 
 @end
